@@ -33,5 +33,5 @@
 ###传播模型
 我们使用随机SEIR模型并且每6小时使用欧拉-丸山算法（Euler-Maruyama algorithm）按照符合传播速度的随机布朗运动模式进行传播，这个模型如图一所示：
 
-http://www.forkosh.com/mathtex.cgi?\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+!(http://www.forkosh.com/mathtex.cgi?\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a})
 
