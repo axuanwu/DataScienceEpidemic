@@ -38,12 +38,6 @@
 
 ![疫情传播示意图](https://github.com/axuanwu/DataScienceEpidemic/blob/master/%E5%9F%BA%E4%BA%8E%E6%AD%A6%E6%B1%89%E7%96%AB%E6%83%85%E7%9A%84%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0/1580805132582.jpg?raw=true)
 
-<p align="center">
-	<img src="https://github.com/axuanwu/DataScienceEpidemic/blob/master/%E5%9F%BA%E4%BA%8E%E6%AD%A6%E6%B1%89%E7%96%AB%E6%83%85%E7%9A%84%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0/1580805132582.jpg?raw=true" alt="Sample"  width="250" height="140">
-	<p align="center">
-		<em>图片示例2</em>
-	</p>
-</p>
 
 详见 [完整公式](https://app.yinxiang.com/fx/2ea02bb5-a2f0-43da-9627-c42a8d12ac8b) 
 
