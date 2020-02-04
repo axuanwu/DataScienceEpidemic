@@ -36,8 +36,7 @@
 ###传播模型
 我们使用随机SEIR模型并且每6小时使用欧拉-丸山算法（Euler-Maruyama algorithm）按照符合传播速度的随机布朗运动模式进行传播，这个模型如图一所示：
 
-![疫情传播示意图](https://github.com/axuanwu/DataScienceEpidemic/blob/master/%E5%9F%BA%E4%BA%8E%E6%AD%A6%E6%B1%89%E7%96%AB%E6%83%85%E7%9A%84%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0/1580805132582.jpg?raw=true)
-
+![疫情传播示意图](https://github.com/axuanwu/DataScienceEpidemic/blob/master/%E5%9F%BA%E4%BA%8E%E6%AD%A6%E6%B1%89%E7%96%AB%E6%83%85%E7%9A%84%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0/1580806034214.jpg)
 
 详见 [完整公式](https://app.yinxiang.com/fx/2ea02bb5-a2f0-43da-9627-c42a8d12ac8b) 
 
