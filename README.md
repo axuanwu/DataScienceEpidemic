@@ -11,7 +11,7 @@
 
 # Early dynamics of transmission and control of 2019-nCoV: a mathematical modelling study
 模型部分：
-在模型中把个体分为4类传染病类别：
+在模型中把个体分为4类传染病相关群体：
 
 1. 易感人群（susceptible）： 暴露在感染环境中但尚未感染人群
 2. 暴露人群（exposed）： 接触感染源但暂未感染（潜伏期人群）
