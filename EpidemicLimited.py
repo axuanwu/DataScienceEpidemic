@@ -38,6 +38,8 @@ class ELModel:
                         continue
                     self.date_list.append(date)
                     self.train_data.append(int(confirm_num))
+                elif date==self.date_zero:
+                    self.infectious_conform_base = 1.0*int(confirm_num)
 
     def next_day_epidermic(self,data_dict):
         """
@@ -62,6 +64,7 @@ class ELModel:
         data_dict_next["beta1"] = data_dict["beta1"]
         data_dict_next["beta2"] = data_dict["beta2"]
         data_dict_next["beta3"] = data_dict["beta3"]
+        data_dict_next["date"] = next_date(data_dict["date"])
         return data_dict_next
 
     def encode_data(self):
@@ -79,6 +82,7 @@ class ELModel:
         data_dict["beta1"] = self.beta_list[0]
         data_dict["beta2"] = self.beta_list[1]
         data_dict["beta3"] = self.beta_list[2]
+        data_dict["date"] = self.date_zero
         return data_dict
 
 
@@ -96,7 +100,19 @@ class ELModel:
         self.beta_list[0] = data_dict["beta1"]
         self.beta_list[1] = data_dict["beta2"]
         self.beta_list[2] = data_dict["beta3"]
+        self.date_zero = data_dict["date"]
 
+    def print_data(self,data_dict):
+        print("date:" +"\t"+ data_dict["date"])
+        print("exposed:" + "\t" +str(data_dict["exposed"]))
+        print("infectious_unknown:" +"\t"+ str(data_dict["infections_unknown"]))
+        print("infectious_unknown_new" +"\t"+ str(data_dict["infectious_unknown_new"]))
+        print("infections_conform:" + "\t"+ str(data_dict["infections_conform"]))
+        print("sigma:" + "\t" +str(data_dict["sigma"]))
+        print("kappa:" + "\t" + str(data_dict["kappa"]))
+        print("beta_list:\t" + "\t".join([str(round(data_dict["beta1"],4)) ,
+                                          str(round(data_dict["beta2"],4)) ,
+                                          str(round(data_dict["beta3"], 4))]))
 
     def cal_err(self, base_data_dict):
         """
@@ -113,7 +129,7 @@ class ELModel:
         for i in range(0, len(self.train_data)):
             error_sum += (self.train_data[i] / dict_list[i]["infections_conform"]-1)**2
         infectious_unknown_new = dict_list[0]["infectious_unknown_new"]**2/dict_list[1]["infectious_unknown_new"]
-        error_sum += (1- base_data_dict["infectious_unknown_new"]/infectious_unknown_new)**2
+        # error_sum += (1- base_data_dict["infectious_unknown_new"]/infectious_unknown_new)**2
         return error_sum
 
     def cal_err2(self, base_data_dict):
@@ -142,6 +158,7 @@ class ELModel:
         fresh_mark = True
         key_list = list(origin_dict.keys())
         key_list.remove("infections_conform")  # 22日的确诊人数为已知参数
+        key_list.remove("date")
         while i<50000 and fresh_mark:
             i+=1
             fresh_mark = False
@@ -163,7 +180,7 @@ class ELModel:
                         pre_err = new_err
                         fresh_mark = True
         self.decode_data(pre_dict)
-        print i
+        print (i)
 
     def predict(self, a_class= "infections_conform", num=-1):
         """
@@ -184,6 +201,10 @@ class ELModel:
             tuple_list.append((day0, data_dict[a_class]))
         return tuple_list
 
+    def print_canshu(self, dict_data):
+        print (self.date_zero+":")
+
+
 if __name__ == "__main__":
     aa = ELModel()
     aa.read_data()
@@ -193,3 +214,4 @@ if __name__ == "__main__":
         t = tuple_list[i]
         str0 = t[0]+"\t"+str(int(t[1]))+"\t"+str(aa.train_data[i])+"\t"+str(round(aa.train_data[i]/t[1],4))
         print(str0)
+    aa.print_data(aa.encode_data())
