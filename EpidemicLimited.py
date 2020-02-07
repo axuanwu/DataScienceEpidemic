@@ -23,7 +23,7 @@ class ELModel:
         self.beta_list =  [2.0 ] * 3
         self.sigma = 1.0/7                     #  我们初始化为7天
         self.kappa = 1.0/10                     #  初步假设发症到确诊为3天
-        self.step = 0.01        # 修正步长
+        self.step = 0.005        # 修正步长
         self.train_data = []
         self.date_list = []
 
@@ -142,7 +142,8 @@ class ELModel:
         fresh_mark = True
         key_list = list(origin_dict.keys())
         key_list.remove("infections_conform")  # 22日的确诊人数为已知参数
-        while i<500 and fresh_mark:
+        while i<50000 and fresh_mark:
+            i+=1
             fresh_mark = False
             random.shuffle(key_list)
             for a_key  in key_list:
@@ -162,6 +163,7 @@ class ELModel:
                         pre_err = new_err
                         fresh_mark = True
         self.decode_data(pre_dict)
+        print i
 
     def predict(self, a_class= "infections_conform", num=-1):
         """
